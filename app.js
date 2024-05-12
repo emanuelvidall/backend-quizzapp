@@ -5,6 +5,8 @@ const quizRoutes = require('./routes/quizRoutes')
 const userRoutes = require('./routes/userRoutes')
 const paintingRoutes = require('./routes/paintingRoutes')
 
+// This project was created under Node v18.20.2
+
 const app = express()
 app.use(bodyParser.json())
 app.use('/api/quizzes', quizRoutes)

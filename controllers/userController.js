@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const Painting = require('../models/painting')
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv')
 
@@ -51,6 +52,16 @@ exports.removeFavorite = async (req, res) => {
     res.status(200).json({message: 'Painting removed from favorites!'})
   } catch (error) {
     res.status(500).json({message: 'Failed to remove favorite', error: error.message})
+  }
+}
+
+exports.getFavorites = async (req, res) => {
+  const {userId} = req.params
+  try {
+    const user = await User.findByPk(userId, {include: 'Favorites'})
+    res.json(user.Favorites)
+  } catch (error) {
+    res.status(500).json({message: 'Failed to get favorites', error: error.message})
   }
 }
 
