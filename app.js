@@ -18,7 +18,7 @@ sequelize
   .sync()
   .then(() => {
     console.log('Connected to MySQL and tables created')
-    const port = process.env.PORT || 3000
+    const port = 3010
     seedAdmin()
     app.listen(port, () => console.log(`Listening on port ${port}...`))
   })
