@@ -4,6 +4,7 @@ const sequelize = require('./config/database')
 const quizRoutes = require('./routes/quizRoutes')
 const userRoutes = require('./routes/userRoutes')
 const paintingRoutes = require('./routes/paintingRoutes')
+const seedAdmin = require('./utils/seeds')
 
 // This project was created under Node v18.20.2
 
@@ -18,6 +19,7 @@ sequelize
   .then(() => {
     console.log('Connected to MySQL and tables created')
     const port = process.env.PORT || 3000
+    seedAdmin()
     app.listen(port, () => console.log(`Listening on port ${port}...`))
   })
   .catch((err) => console.error('Error connecting to MySQL', err))

@@ -15,6 +15,8 @@ User.init(
     email: {type: DataTypes.STRING, unique: true, allowNull: false},
     password: {type: DataTypes.STRING, allowNull: false},
     score: {type: DataTypes.INTEGER, defaultValue: 0},
+    //admin is typeUser 0, user is typeUser 1
+    typeUser: {type: DataTypes.INTEGER, defaultValue: 1, required: false},
   },
   {
     sequelize,
