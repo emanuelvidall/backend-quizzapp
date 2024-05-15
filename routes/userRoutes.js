@@ -15,4 +15,9 @@ router.get('/get-all-users', adminController.getAllUsers)
 router.delete('/remove-favorite', userController.removeFavorite)
 router.post('/record-quiz', userController.recordQuizCompletion)
 
+//transferir para admin depois
+router.post('/add-score', userController.AddScore)
+router.get('/get-scores/:userId', userController.getScores)
+router.patch('/update-score', userController.updateScore)
+
 module.exports = router

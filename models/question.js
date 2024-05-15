@@ -1,13 +1,26 @@
 const {Model, DataTypes} = require('sequelize')
 const sequelize = require('../config/database')
+const Quiz = require('./quiz')
 
 class Question extends Model {}
+
 Question.init(
   {
     text: {type: DataTypes.STRING, allowNull: false},
-    options: {type: DataTypes.JSON, allowNull: false}, // JSON type to store options
+    options: {type: DataTypes.JSON, allowNull: false},
+    isCorrect: {type: DataTypes.BOOLEAN, allowNull: false},
+    quizId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Quiz,
+        key: 'id',
+      },
+    },
   },
   {sequelize, modelName: 'question'},
 )
+
+Quiz.hasMany(Question, {foreignKey: 'quizId', as: 'questions'})
+Question.belongsTo(Quiz, {foreignKey: 'quizId', as: 'quiz'})
 
 module.exports = Question

@@ -1,7 +1,7 @@
 const {Model, DataTypes} = require('sequelize')
 const sequelize = require('../config/database')
 const bcrypt = require('bcrypt')
-const Painting = require('./painting') // Ensure you import the Painting model
+const Painting = require('./painting')
 
 class User extends Model {
   async validPassword(password) {
@@ -15,8 +15,8 @@ User.init(
     email: {type: DataTypes.STRING, unique: true, allowNull: false},
     password: {type: DataTypes.STRING, allowNull: false},
     score: {type: DataTypes.INTEGER, defaultValue: 0},
-    //admin is typeUser 0, user is typeUser 1
-    typeUser: {type: DataTypes.INTEGER, defaultValue: 1, required: false},
+    // admin typeUser 0, user typeUser 1
+    typeUser: {type: DataTypes.INTEGER, defaultValue: 1},
   },
   {
     sequelize,

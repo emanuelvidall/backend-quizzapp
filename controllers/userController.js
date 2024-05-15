@@ -76,3 +76,36 @@ exports.recordQuizCompletion = async (req, res) => {
     res.status(500).json({message: error.message})
   }
 }
+
+exports.AddScore = async (req, res) => {
+  const {userId, score} = req.body
+  try {
+    const user = await User.findByPk(userId)
+    await user.addScore(score)
+    res.json({message: 'Score added!'})
+  } catch (error) {
+    res.status(500).json({message: error.message})
+  }
+}
+
+exports.getScores = async (req, res) => {
+  const {userId} = req.params
+  try {
+    const user = await User.findByPk(userId)
+    const scores = await user.getScores()
+    res.json(scores)
+  } catch (error) {
+    res.status(500).json({message: error.message})
+  }
+}
+
+exports.updateScore = async (req, res) => {
+  const {userId, score} = req.body
+  try {
+    const user = await User.findByPk(userId)
+    await user.updateScore(score)
+    res.json({message: 'Score updated!'})
+  } catch (error) {
+    res.status(500).json({message: error.message})
+  }
+}

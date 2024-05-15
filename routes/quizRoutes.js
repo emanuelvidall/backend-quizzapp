@@ -4,5 +4,6 @@ const quizController = require('../controllers/quizController')
 
 router.get('/:paintingId', quizController.getQuizByPainting)
 router.post('/', quizController.createQuiz)
+router.post('/calculate-score', quizController.calculateQuizScore)
 
 module.exports = router
