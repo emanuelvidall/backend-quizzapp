@@ -7,12 +7,10 @@ class Question extends Model {}
 Question.init(
   {
     text: {type: DataTypes.STRING, allowNull: false},
-    options: {type: DataTypes.JSON, allowNull: false},
-    isCorrect: {type: DataTypes.BOOLEAN, allowNull: false},
     quizId: {
       type: DataTypes.INTEGER,
       references: {
-        model: Quiz,
+        model: 'quizzes', // Table name, not model name
         key: 'id',
       },
     },
