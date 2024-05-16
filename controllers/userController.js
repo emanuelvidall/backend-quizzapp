@@ -109,3 +109,13 @@ exports.updateScore = async (req, res) => {
     res.status(500).json({message: error.message})
   }
 }
+
+exports.getUser = async (req, res) => {
+  const {userId} = req.params
+  try {
+    const user = await User.findByPk(userId)
+    res.json({name: user.name, email: user.email, id: user.id})
+  } catch (error) {
+    res.status(500).json({message: error.message})
+  }
+}

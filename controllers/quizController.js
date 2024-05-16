@@ -70,3 +70,12 @@ exports.calculateQuizScore = async (userId, quizId, answers) => {
     throw error
   }
 }
+
+exports.getQuizById = async (req, res) => {
+  try {
+    const quiz = await Quiz.findByPk(req.params.quizId, {include: 'questions'})
+    res.json(quiz)
+  } catch (error) {
+    res.status(500).json({message: error.message})
+  }
+}

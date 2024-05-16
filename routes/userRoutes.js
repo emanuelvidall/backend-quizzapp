@@ -7,6 +7,7 @@ router.post('/register', userController.register)
 router.post('/login', userController.login)
 router.post('/add-favorite', userController.addFavorite)
 router.get('/get-favorites/:userId', userController.getFavorites)
+router.get('/get-user/:userId', userController.getUser)
 
 //transferir para admin depois
 
