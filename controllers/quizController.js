@@ -14,7 +14,8 @@ exports.getQuizByPainting = async (req, res) => {
 }
 
 exports.createQuiz = async (req, res) => {
-  const {paintingId, title, questions} = req.body
+  const {paintingId} = req.params
+  const {title, questions} = req.body
   try {
     const newQuestions = await Question.bulkCreate(questions, {
       returning: true,
