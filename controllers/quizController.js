@@ -87,7 +87,7 @@ exports.calculateQuizScore = async (userId, quizId, answers) => {
         {
           model: Question,
           as: 'questions',
-          attributes: ['id', 'isCorrect'],
+          attributes: ['id', 'is_correct'],
         },
       ],
     })
@@ -100,7 +100,7 @@ exports.calculateQuizScore = async (userId, quizId, answers) => {
 
     for (const answer of answers) {
       const question = quiz.questions.find((q) => q.id === answer.questionId)
-      if (question && question.isCorrect === answer.selectedOption) {
+      if (question && question.is_correct === answer.selectedOption) {
         score += 1
       }
     }
