@@ -83,7 +83,7 @@ exports.AddScore = async (req, res) => {
   const {score} = req.body
   try {
     const user = await User.findByPk(userId)
-    user.score += score
+    await user.increment('score', {by: score})
     res.json({message: score + ' score points added!'})
   } catch (error) {
     res.status(500).json({message: error.message})
