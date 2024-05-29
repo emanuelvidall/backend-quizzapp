@@ -79,11 +79,12 @@ exports.recordQuizCompletion = async (req, res) => {
 }
 
 exports.AddScore = async (req, res) => {
-  const {userId, score} = req.body
+  const {userId} = req.params
+  const {score} = req.body
   try {
     const user = await User.findByPk(userId)
-    await user.addScore(score)
-    res.json({message: 'Score added!'})
+    user.score += score
+    res.json({message: score + ' score points added!'})
   } catch (error) {
     res.status(500).json({message: error.message})
   }
