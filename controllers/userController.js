@@ -25,6 +25,7 @@ exports.login = async (req, res) => {
     const token = jwt.sign({id: user.id}, process.env.SECRET, {
       expiresIn: '1h',
     })
+    console.log('usuario logado2')
     res.json({token: token, id: user.id, userType: user.typeUser})
   } catch (error) {
     res.status(500).json({message: error.message})
@@ -92,7 +93,7 @@ exports.getScores = async (req, res) => {
   const {userId} = req.params
   try {
     const user = await User.findByPk(userId)
-    const scores = await user.getScores()
+    const scores = user.score
     res.json(scores)
   } catch (error) {
     res.status(500).json({message: error.message})
