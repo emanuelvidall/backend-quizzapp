@@ -5,6 +5,7 @@ const quizRoutes = require('./routes/quizRoutes')
 const userRoutes = require('./routes/userRoutes')
 const paintingRoutes = require('./routes/paintingRoutes')
 const seedAdmin = require('./utils/seeds')
+const userBoard = require('./routes/boardRoutes')
 
 // This project was created under Node v18.20.2
 
@@ -13,6 +14,7 @@ app.use(bodyParser.json())
 app.use('/api/quizzes', quizRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/paintings', paintingRoutes)
+app.use('/api/board', userBoard)
 
 sequelize
   .sync()

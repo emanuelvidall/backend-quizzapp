@@ -13,9 +13,9 @@ exports.getPosts = async (req, res) => {
 }
 
 exports.makePost = async (req, res) => {
-  const {content, userId, boardId} = req.body
+  const {title, content, userId} = req.body
   try {
-    const post = await Post.create({content, userId, boardId})
+    const post = await Post.create({title, content, userId})
     res.status(201).json(post)
   } catch (error) {
     res.status(400).json({message: error.message})

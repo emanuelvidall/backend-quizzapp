@@ -17,14 +17,6 @@ Post.init(
         key: 'id',
       },
     },
-    boardId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: Board,
-        key: 'id',
-      },
-    },
   },
   {
     sequelize,
